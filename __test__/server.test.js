@@ -104,16 +104,7 @@ describe("Auth Router", () => {
     expect(response.body).toEqual(expect.anything());
   });
   /////////////////////////////////////////////////////
-  it("GET Succeeds with a valid token", async () => {
-    let { username, password } = userData.testUser;
-    const response = await mockRequest
-      .get("book")
-      .set("Authorization", `Bearer ${accessToken}`);
-    const userObject = response.body;
-    expect(response.status).toBe(200);
-    expect(response.body).toBeTruthy();
-    expect(response.body).toEqual(expect.anything());
-  });
+
   ////////////////////////////////////
   it("GET one Succeeds with a valid token", async () => {
     let { username, password } = userData.testUser;
@@ -163,25 +154,7 @@ describe("Auth Router", () => {
     }
   });
   ////////////////////////////////////////////////////
-  it("delete Succeeds with a valid token CREAT", async () => {
-    //('admin', 'writer', 'editor', 'user')
-    userData.testUser.role="admin";
-    let { username, password } = userData.testUser;
-    const response = await mockRequest.post("/signin").auth(username, password);
-
-    accessToken = response.body.token;
-    const bearerResponse = await mockRequest
-      .delete("book")
-      .set("Authorization", `Bearer ${accessToken}`);
-
-    // Not checking the value of the response, only that we "got in"
-    if (response.body.user.actions.length == 4) {
-      console.log("44444444444444444444444",response.body.user.actions)
-      expect(bearerResponse.status).toBe(204);
-    } else {
-      expect(bearerResponse.status).toBe(500);
-    }
-  });
+ 
   it("Secret Route fails with invalid token", async () => {
     const response = await mockRequest
       .get("/secret")
