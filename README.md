@@ -2,13 +2,25 @@
 
 [gitHub](https://github.com/alsatarysamah/Book-shop)
 
-[PR](https://github.com/alsatarysamah/Book-shop/pull/1)
+[PR](https://github.com/alsatarysamah/Book-shop/pull/2#partial-pull-merging)
+
+[Action](https://github.com/alsatarysamah/Book-shop/actions)
 
 [heroku](https://ms-book-shop.herokuapp.com/)
 
-Its a project that is designed to handle user registration and sign in using Basic, Bearer, or OAuth along with a custom “authorization” module that will grant/deny users access to the server based on their role or permissions level.
+Book shop is designed to handle user registration and sign in using Basic, Bearer, or OAuth along with a custom “authorization” module that will grant/deny users access to the Book-shop server based on their role or permissions level.the roles are:
+
+ 1-user: ['read'] from the  Books table,
+           
+2- writer: ['read', 'create'] from the Books table,
+
+3-  editor: ['read', 'create', 'update'] from the Books table,
+
+ 4-  admin: ['read', 'create', 'update', 'delete'] from the  Books table
+
+
 # UML
-![]()
+![](./UML.png)
 ## User Routes
 
 POST /signup to create a user
@@ -21,7 +33,7 @@ GET /users should require a valid token and “delete” permissions
 
 ##  Books Routes
 
-these routes with bearer and acl middleware:
+these routes have **bearer** and **acl** middlewares:
 
 1-POST /book adds an item to the DB and returns an object with the added item
 
