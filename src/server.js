@@ -10,7 +10,9 @@ const errorHandler = require('./error-handlers/500.js');
 const notFound = require('./error-handlers/404.js');
 const authRoutes = require('./auth/router/index.js');
 const bookRoutes=require("../src/auth/router/book")
-
+const itemRoutes=require("../src/auth/router/item")
+const catRouter =require("../src/auth/router/cat")
+const productRouter =require("../src/auth/router/product")
 // Prepare the express app
 const app = express();
 app.get("/",(req,res)=>{
@@ -27,10 +29,10 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 app.use(authRoutes);
 app.use(bookRoutes);
-// app.use(cloRouter);
+app.use(itemRoutes);
 
-// app.use(foodRouter2);
-// app.use(cloRouter2);
+app.use(catRouter);
+app.use(productRouter);
 
 // Catchalls
 app.use(notFound);
