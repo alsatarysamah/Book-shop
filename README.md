@@ -44,3 +44,15 @@ these routes have **bearer** and **acl** middlewares:
 4-PUT /book/:id  returns a single, updated item by ID
 
 5-DELETE /book/:id  returns an empty object. 
+
+{
+    "name":"first item",
+    "assignedTo":"samah",
+    "difficulty":"1"
+}
+
+{
+    "username":"s",
+    "password":"123",
+    "role":"admin"
+}
